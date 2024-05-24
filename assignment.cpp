@@ -15,7 +15,7 @@ int main () {
         else if (student > assignment){
             cout<<"Assignment is done , but not submitted" << endl;
         }
-        else {
+        else {jn
             cout<<"Assignment is NOT done"<<endl;
         }
     return 0;
