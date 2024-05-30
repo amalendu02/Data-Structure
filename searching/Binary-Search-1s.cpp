@@ -27,8 +27,8 @@ int binarySearch(int arr[], int n, int target) {
 }
 int main () {
     int arr[] = {10,20,30,40,50,60,70,80,90};
-    int target = 60;
-    int n = 9;
+    int target = 30;
+    int n = 8;
 
     int findIndex = binarySearch(arr,n,target);
 
