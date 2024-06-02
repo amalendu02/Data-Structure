@@ -1,18 +1,18 @@
 #include<iostream>
 using namespace std;
 
-int quoitent(int divisor, int divident) {
+int quoitent(int divisor, int dividend) {
     int start = 0;
-    int end = divident;
+    int end = dividend;
     int mid = start + (end - start)/2;
     int ans = -1;
 
     while(start <= end) {
-        if(mid*divisor == divident) {
+        if(mid*divisor == dividend) {
             return mid;
         }
 
-        else if(mid*divisor < divident) {
+        else if(mid*divisor < dividend) {
             ans = mid;
             start = mid + 1;
         }
@@ -25,9 +25,16 @@ int quoitent(int divisor, int divident) {
 }
 int main () {
     int divisor = 7;
-    int divident = 35;
+    int dividend = 35;
 
-    int ans = quoitent(divisor,divident);
+    int n = -5;
+    cout<<abs(n)<<endl;
+
+    int ans = quoitent(abs(divisor),abs(dividend));
+
+    if((divisor>0 && dividend<0) || (divisor<0 && dividend>0)) {
+        ans = 0-ans;
+    }
     cout << "answer is: " << ans << endl;
    
     
