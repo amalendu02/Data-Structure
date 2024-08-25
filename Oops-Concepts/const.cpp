@@ -1,5 +1,32 @@
 #include<iostream>
 using namespace std;
+
+// int main2() {
+    
+//     class abc {
+//         int x;
+//         int *y;
+
+//         public:
+//         abc() {
+//             x=0;
+//             y= new int(0);
+//         }
+
+//         void setX(int _val) {
+//             x = _val;
+//         }
+
+//         int getY() {
+//             return *y;
+//         }
+
+//         void setY(int _val) {
+
+//         }
+//     }
+// }
+
 int main () {
     // int *a = new int;
     // *a = 2;
