@@ -49,6 +49,15 @@ void insertAttail(Node* &head, Node* &tail, int data) {
     }
 }
 
+void createTail(Node* &head, Node* &tail) {
+    Node* temp = head;
+    while(temp -> next != NULL) {
+        temp = temp -> next;
+    }
+    // when this loop will end then tail pointer point last node 
+    tail = temp;
+}
+
 int main () {
     Node* first = new Node(10);
     Node* second = new Node(20);
