@@ -27,15 +27,34 @@ void PrintL(Node* head) {
     cout << endl;
 }
 
-int getLength(Node* head) {
-    Node* temp = head;
-    int count = 0;
+// to insert data in linkedlist we need to pass it by refrence // remember this it can make mistake
+void insertAtHead(Node* &head, int data) {   
 
-    while(temp != NULL) {
-        count++;
-        temp = temp -> next;
+    if(head == NULL) {
+        // empty LL
+
+        // step 1 create new node
+        Node* newNode = new Node(data);
+
+        //step 2 update head
+        head = newNode;
     }
-    return count;
+
+    else {
+        // non-empty LL 
+
+        Node* newNode = new Node(data);
+        //attach new node to head node
+        newNode -> next = head;
+        // update head
+        head = newNode;
+    }
+    // create new node
+    Node* newNode = new Node(data);
+    //attach new node to head node
+    newNode -> next = head;
+    //update head
+    head = newNode;
 }
 
 int main () {
@@ -54,7 +73,10 @@ int main () {
     Node* head = first;
     PrintL(head);
 
-    cout << "Length of Linkedlist is: " << getLength(head) << endl;
+    insertAtHead(head, 500);
+    PrintL(head);
+
+    
 
     return 0;
 
