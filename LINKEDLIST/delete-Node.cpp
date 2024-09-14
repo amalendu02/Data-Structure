@@ -17,7 +17,7 @@ class Node {
     }
 
     ~Node() {
-        cout << "Distructor called for " << this->data << endl;
+        cout << "Distructor called for " << this->data << endl; // this how distructure made of
     }
 };
 
@@ -112,6 +112,7 @@ void deleteNode(Node* &head, Node* &tail, int position) {
 
     else if(position == len) {
         // delete last node
+
         
         // find prev Node
         Node* prev = head;
@@ -128,7 +129,7 @@ void deleteNode(Node* &head, Node* &tail, int position) {
     else {
         // delete any middle node
 
-        // set - prev/curr
+        // set - prev/curr pointers
         Node* prev = NULL;
         Node* curr = head;
         while(position != 1) {
@@ -164,7 +165,7 @@ int main () {
     PrintL(head);
     cout << endl;
 
-    deleteNode(head, tail, 3);
+    deleteNode(head, tail, 5);
     PrintL(head);
     cout << endl;
 
