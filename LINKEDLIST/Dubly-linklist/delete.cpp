@@ -112,6 +112,61 @@ void insertAtPosition(Node* &head, Node* &tail, int data, int position) {
     }
 }
 
+void deleteNode(Node* &head, Node* &tail,int position) {
+    if(head == NULL) {
+        //LinkedList is empty
+        cout << "Cannot delete, coz LL is empty" << endl;
+        return;
+    }
+
+    if(head == tail) {
+        Node* temp = head;
+        delete temp;
+        head = NULL;
+        tail = NULL;
+        return;
+    }
+
+    int len = findLength(head);
+    if(position == 1) {
+        // delete from head
+        Node* temp = head;
+        head = head -> next;
+        temp -> next = NULL;
+        head -> prev = NULL;
+        delete temp;
+    }
+
+    else if(position == len) {
+        // delete from tail
+        Node* prevNode = tail -> prev;
+        prevNode->next = NULL;
+        tail->prev = NULL;
+        delete tail;
+        tail = prevNode;
+    }
+
+    // delete from mid
+    else {
+        // step1: set prevNode/currNode/ nextNode
+        Node* prevNode = NULL;
+        Node* & currNode = head;
+        while(position != 1) {
+            position ++;
+            prevNode  =currNode;
+            currNode = currNode->next;
+        }
+        Node* nextNode = currNode->next;
+
+        prevNode->next = nextNode;
+        currNode->prev = NULL;
+        currNode->next = NULL;
+        nextNode->prev = prevNode;
+
+        delete currNode;
+    }
+}
+
 
 int main () {
 
@@ -124,7 +179,7 @@ int main () {
     print(head);
     cout << endl;
 
-    insertAtPosition(head, tail, 100, 5);
+    deleteNode(head,tail,1);
     print(head);
 
 
