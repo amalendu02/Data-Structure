@@ -168,6 +168,38 @@ void deleteNode(Node* &head, Node* &tail,int position) {
     }
 }
 
+Node* getStartingPoint(Node* &head) {
+    // cheack for loop
+    Node* slow = head;
+    Node* fast = head;
+    while(fast != NULL) {
+        fast = fast->next;
+        if(fast != NULL) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        if(fast == slow){
+            break;
+        }
+    }
+
+    if(fast == NULL) {
+        return NULL;
+    }
+
+    // reached this section it means
+    slow = head;
+
+    // slow and fast one next step
+    while(slow != fast) {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    // can return any one fast or slow coz both are in same place
+    return slow;
+
+}
+
 
 int main () {
 
