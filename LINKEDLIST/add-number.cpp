@@ -65,7 +65,7 @@ void addOne(Node* &head) {
     // add 1
     int carry = 1;
     Node* temp = head; // for traversel we slould take temp for good practice
-    while(head != NULL) {
+    while(temp->next != NULL) {
         int totalSum = temp->data + carry;
         int digit = totalSum % 10;
         carry = totalSum / 10;
@@ -95,20 +95,24 @@ void addOne(Node* &head) {
 
 }
 
+
 int main () {
 
     Node* head = NULL;
     Node* tail = NULL;
 
-    insertAtHead(head, tail, 3);
-    insertAtHead(head, tail, 2);
-    insertAtHead(head, tail, 1);
+    insertAtHead(head, tail, 9);
+    insertAtHead(head, tail, 9);
+    insertAtHead(head, tail, 9);
     print(head);
     cout << endl;
 
     addOne(head);
     print(head);
     cout << endl;
+
+
+
 
     return 0;
 
