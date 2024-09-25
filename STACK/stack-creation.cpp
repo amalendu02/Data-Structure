@@ -1,26 +1,34 @@
 #include<iostream>
 #include<stack>
 using namespace std;
-
 int main () {
-    stack<int> s;
 
-    s.push(2);
-    s.push(3);
 
-    s.pop();
-    s.pop();
+// create stack
+    stack<int>st;
+    // add element
+    st.push(10);
+    st.push(20);
+    st.push(30);
 
-    cout << "stack is: " << s.top() << endl;
+    cout << "size of stack is " << st.size() << endl;
 
-    if(s.empty()) {
+    // remove 
+    st.pop();
+    
+
+    // check empty  -- for checking empty 2 case is there true or false
+    if(st.empty()) {
         cout << "stack is empty" << endl;
     }
-    else {
-        cout << "stack is not empty" << endl;
+
+    else{
+        cout << "stack is non empty" << endl;
     }
 
-    cout << "size of stack is: " << s.size() << endl;
+    // top element
+    cout << st.top() << endl;
 
     return 0;
+
 }
