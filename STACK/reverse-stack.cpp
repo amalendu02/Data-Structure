@@ -17,5 +17,5 @@ int main () {
         st.pop(); // after printing have to delete the stack
     }
     cout << endl;
-    return 0;
+    return 0; 
 }
