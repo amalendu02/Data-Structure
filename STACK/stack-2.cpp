@@ -84,22 +84,32 @@ int main () {
 
   // push
   st.push(10);
-  st.print();
+//   st.print();
 
   st.push(20);
   st.print();
 
-  st.push(30);
-  st.print();
+  cout << endl << "top element" << st.getTop() << endl;
+  cout << endl << "size of stack "<< st.getSize() << endl;
 
-  st.pop();
-  st.print();
+  if(st.isEmpty()) {
+    cout << "empty" << endl;
+  }
+  else {
+    cout << "Not empty" << endl;
+  }
 
-  st.pop();
-  st.print();
+//   st.push(30);
+//   st.print();
 
-  st.pop();
-  st.print();
+//   st.pop();
+//   st.print();
+
+//   st.pop();
+//   st.print();
+
+//   st.pop();
+//   st.print();
 
     return 0;
 }
