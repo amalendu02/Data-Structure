@@ -41,7 +41,7 @@ class Queue{
         if(front == -1 && rear == -1) {
             cout << "Queue Underflow" << endl;
             return;
-        }
+        }  
         else if(front == rear) {
             // empty case -> single element
             arr[rear] = -1;
@@ -85,7 +85,7 @@ class Queue{
 
      int gerRear() {
         if(rear == -1) {
-            cout << "No element in queue , can't give front element" << endl;
+            cout << "No element in queue , can't give rear element" << endl;
             return -1;
         }
         else {
