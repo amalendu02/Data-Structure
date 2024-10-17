@@ -35,9 +35,9 @@ class Node{
 
         //create right subtree
         newNode->right = createTree();
-        return newNode;
+        return newNode; 
     }
-
+ 
 int main () {
 
     Node* root = createTree();
