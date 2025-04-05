@@ -2,52 +2,53 @@
 #include<stack>
 using namespace std;
 
-void solve(stack<int>st, int& pos , int&ans) {
-    // bas case
+void solve(stack<int>&st, int &pos, int &ans) {
+    
+    // base case
     if(pos == 1) {
-       ans =  st.top();
-       return;
+        ans = st.top();
+        return;
     }
 
-    // solved by us
-    pos --;
+    pos--;
     int temp = st.top();
     st.pop();
-
     solve(st,pos,ans);
-    // backtracking
     st.push(temp);
-}
-int getMiddleElement(stack<int> &st) {
-    int size = st.size();
 
-    if(st.empty()) 
-       return -1;
+}
+
+int getMiddleEle(stack<int>&st){
+    int size = st.size();
+    if(st.empty()){
+        return -1;
+    }
     else {
-        // stack is not empty
-        // odd 
         int pos = 0;
+
         if(size & 1) {
             pos = size/2 + 1;
         }
         else {
-            // even case
             pos = size/2;
         }
-
         int ans = -1;
-         solve(st,pos, ans);
+        solve(st,pos,ans);
         return ans;
     }
+
 }
 
-int main () {
-    stack<int>st;
+int main() {
+    stack<int> st;
+
     st.push(10);
     st.push(20);
     st.push(30);
-    // st.push(40);
+    st.push(40);
 
-    int mid = getMiddleElement(st);
-    cout << " Middle element " << mid << endl;
+    int mid = getMiddleEle(st);
+
+    cout <<" Middle element is: " << mid << endl;
 }
+

@@ -4,7 +4,7 @@ using namespace std;
 bool Shortedarr(int arr[], int size, int index) {
 
     //base case
-    if(index >=size){
+    if(index >= size){
         return true;
     }
 

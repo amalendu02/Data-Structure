@@ -2,53 +2,54 @@
 #include<stack>
 using namespace std;
 
-void insertSorted(stack<int>&st, int element) {
-    if(st.empty() || element > st.top()) {
+void insertSorted(stack<int>&st, int element){
+
+    // BASE CASE
+    if(st.empty() || element > st.top()){  // remember this step --
         st.push(element);
         return;
     }
 
-    // case 1
     int temp = st.top();
     st.pop();
 
-    // recursion
+    // RECURSION
     insertSorted(st,element);
 
-    // backtracking
+    // BACKTRACK
     st.push(temp);
+
 }
 
-void SortStack(stack<int>&st) {
-    // base case
-    if(st.empty()) 
-    return;
+void sortStack(stack<int>&st) {
+    
+    // BASE CASE
+    if(st.empty()){
+        return;
+    }
 
-    // case 1
     int temp = st.top();
     st.pop();
 
-    // recursion
-    SortStack(st);
+    sortStack(st);
 
-    // backtracking
-    insertSorted(st, temp);
+    insertSorted(st,temp);
 }
-int main () {
-    stack<int>st;
-    
-    st.push(5);
-    st.push(10);
-    st.push(7);
-    st.push(12);
-    st.push(6);
 
-    SortStack(st);
+int main() {
+
+    stack<int>st;
+
+    st.push(1);
+    st.push(5);
+    st.push(3);
+    st.push(4);
+
+    sortStack(st);
+
     while(!st.empty()) {
         cout << st.top() << " ";
         st.pop();
     }
-
-    return 0;
 
 }

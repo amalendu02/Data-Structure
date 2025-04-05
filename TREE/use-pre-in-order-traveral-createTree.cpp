@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<map>
 using namespace std;
 
 class Node{
@@ -84,16 +85,6 @@ void postOrderTraversal(Node* root) {
     cout << root->data << " ";
 }
 
-
-int searchInorder(int inorder[], int size, int target) {
-    for(int i=0; i<size; i++) {
-        if(inorder[i] == target) {
-            return i;
-        }
-    }
-    return -1;
-}
-
 void levelorderTraversal(Node* root) {
         queue<Node*> q;
         q.push(root);
@@ -122,9 +113,25 @@ void levelorderTraversal(Node* root) {
         }
     }
 
+int searchInorder(int inorder[], int size, int target) {
+    for(int i=0; i<size; i++) {
+        if(inorder[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void createMapping(int inorder[], int size, map<int,int>&valueToIndexMap) {
+    for(int i=0; i<size; i++) {
+        int element = inorder[i];
+        int index = i;
+        valueToIndexMap[element] = index;
+    }
+}
 
 // have to pass preIndex by reference important point
-Node* constructTreeFromPreeInOrderTrav(int preOrder[], int inorder[], int &preIndex, int inOrderStart, int inOrderEnd, int size) {
+Node* constructTreeFromPreeInOrderTrav( map<int,int>&valueToIndexMap, int preOrder[], int inorder[], int &preIndex, int inOrderStart, int inOrderEnd, int size) {
 
     // base case
     if(preIndex >= size || inOrderStart > inOrderEnd) {
@@ -137,12 +144,14 @@ Node* constructTreeFromPreeInOrderTrav(int preOrder[], int inorder[], int &preIn
     Node* root = new Node(element);
 
     // have to search element in inorder
-    int position = searchInorder(inorder, size, element);
+    // int position = searchInorder(inorder, size, element);
+    
+    int position = valueToIndexMap[element];
 
     // other case recursion
-    root->left = constructTreeFromPreeInOrderTrav(preOrder, inorder, preIndex, inOrderStart, position-1, size);
+    root->left = constructTreeFromPreeInOrderTrav(valueToIndexMap, preOrder, inorder, preIndex, inOrderStart, position-1, size);
 
-    root->right = constructTreeFromPreeInOrderTrav(preOrder, inorder, preIndex, position+1, inOrderEnd, size);
+    root->right = constructTreeFromPreeInOrderTrav(valueToIndexMap, preOrder, inorder, preIndex, position+1, inOrderEnd, size);
 
     return root;
 }
@@ -153,8 +162,10 @@ int main () {
     int preOrderIndex = 0;
     int inorderStart = 0;
     int inorderEnd = 5;
+    map<int,int> valueToIndexMap;
+    createMapping(inorder, size, valueToIndexMap);
 
-    Node* root = constructTreeFromPreeInOrderTrav(preorder, inorder, preOrderIndex, inorderStart, inorderEnd, size);
+    Node* root = constructTreeFromPreeInOrderTrav(valueToIndexMap, preorder, inorder, preOrderIndex, inorderStart, inorderEnd, size);
     cout << "Printing the emtire tree: " << endl;
     levelorderTraversal(root);
 

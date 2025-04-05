@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+class Vector{
+    public:
+    int x;
+    int y;
+
+    // init list
+    Vector(int x, int y) : x(x), y(y){
+
+    }
+    //op overloading
+    void operator+cons
+
+    void display() {
+        cout << "x" << x << endl;
+        cout << "y" << y << endl;
+    }
+};
+
+
+
+int main() {
+
+}

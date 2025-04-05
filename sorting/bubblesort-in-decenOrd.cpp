@@ -14,8 +14,8 @@ void bubblesort(vector<int>&v) {
     int n = v.size();
     for(int i = 0; i<n-1; ++i ) {
         for(int j = i-1; i<n-1-j; ++j) {
-            if (v[j-1] > v[j]) {
-                swap(v[j-1], v[j]);
+            if(v[j] > v[j+1]) {
+                swap(v[j], v[j+1]);
             }
         }
     }

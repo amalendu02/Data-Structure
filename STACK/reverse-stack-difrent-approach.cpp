@@ -2,55 +2,40 @@
 #include<stack>
 using namespace std;
 
-void insertAtBottom(stack<int>&st, int& element) {
-    // base case
-    if(st.empty()) {
+void reverseANumber(stack<int>&st, int &element){
+
+    // BASE CASE
+    if(st.empty()){
         st.push(element);
         return;
     }
 
-    // case 1
     int temp = st.top();
     st.pop();
 
-    //recursion
-    insertAtBottom(st,element);
+    reverseANumber(st,element);
 
-    //backtrack
     st.push(temp);
 }
 
-void reverseStack(stack<int> &st) {
-    // base case
-    if(st.empty()) {
-        return;
-    }
-
-    // 1case solve
-    int temp = st.top();
-    st.pop();
-
-    //recursion
-    reverseStack(st);
-
-    //backtrack
-    insertAtBottom(st,temp);
-}
-int main () {
-
+int main() {
     stack<int>st;
+
     st.push(10);
     st.push(20);
     st.push(30);
     st.push(40);
 
-    reverseStack(st);
-    cout << "with reverse" << endl;
-    while(!st.empty()) {
-        cout << st.top() <<" ";
+    int element = st.top();
+
+    for(int i=0; i<st.size(); i++) {
+        int element = st.top();
         st.pop();
+        reverseANumber(st,element);
     }
 
-
-
+    while(!st.empty()) {
+        cout << st.top() << " ";
+        st.pop();
+    }
 }
